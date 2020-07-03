@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-pokemon-header',
@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonHeaderComponent implements OnInit {
 
-  constructor() { }
+  @Input() style: string;
+
+  @Output() styleChange = new EventEmitter();
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

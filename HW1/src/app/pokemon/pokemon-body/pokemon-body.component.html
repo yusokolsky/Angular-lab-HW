@@ -1,1 +1,21 @@
-<p>pokemon-body works!</p>
+<div class="count-select">
+  Number of pokemons (refresh damage)
+  <select #t (change)="countChange(t.value)">
+    <option selected>100</option>
+    <option>200</option>
+    <option>300</option>
+    <option>400</option>
+    <option>800</option>
+    <option>949</option>
+  </select>
+</div>
+<div [ngClass]="{'body_wrapper-lines': style === 'lines'}"
+     class="body_wrapper"
+>
+  <app-pokemon-item
+    (action)="onAction($event)"
+    *ngFor="let pokemon of pokemons"
+    [pokemon]="pokemon"
+    [style]="style"
+  ></app-pokemon-item>
+</div>
