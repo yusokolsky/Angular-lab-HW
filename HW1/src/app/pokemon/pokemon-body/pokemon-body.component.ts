@@ -35,16 +35,16 @@ export class PokemonBodyComponent implements OnInit {
     this.getPokemons();
   }
 
+  static getRandomDamage(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
   private getPokemons() {
-    pokemons.forEach((pokemon, index) => {
+    pokemons.forEach((pokemon) => {
       pokemon.damage = this.getRandomDamage(20, 100);
     });
     this.pokemons = pokemons.slice(0, this.count);
 
-  }
-
-  private getRandomDamage(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min)) + min;
   }
 
 }

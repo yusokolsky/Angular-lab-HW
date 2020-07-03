@@ -16,6 +16,7 @@
     <span class="pokemon_damage">⚔ {{ pokemon.damage }} damage</span>
     <img [ngClass]="{'pokemon_image-lines': style === 'lines'}"
          [src]="'../../../assets/pokemons/'+ pokemon.id +'.png'"
+         alt="{{pokemon.name}}"
          class="pokemon_image"
     >
 

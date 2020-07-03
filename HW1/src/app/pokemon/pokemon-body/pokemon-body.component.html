@@ -1,6 +1,6 @@
 <div class="count-select">
-  Number of pokemons (refresh damage)
-  <select #t (change)="countChange(t.value)">
+  <label for="count">Number of pokemons (refresh damage)</label>
+  <select #t (change)="countChange(t.value)" id="count">
     <option selected>100</option>
     <option>200</option>
     <option>300</option>
