@@ -35,7 +35,7 @@ export class PokemonBodyComponent implements OnInit {
     this.getPokemons();
   }
 
-  static getRandomDamage(min: number, max: number): number {
+  private getRandomDamage(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
