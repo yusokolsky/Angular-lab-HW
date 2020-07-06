@@ -21,7 +21,8 @@ export class PokemonBodyComponent implements OnInit {
 
   onAction(event): void {
     const pokemonIndex: number = this.pokemons.findIndex(el => el.id === event.id);
-    const action: string = event.action ? 'caught' : 'released';
+    this.pokemons[pokemonIndex].caught = !this.pokemons[pokemonIndex].caught;
+    const action: string = event.action ? 'released' : 'caught';
     alert(`Pokemon ${this.pokemons[pokemonIndex].name} was ${action}`);
     console.log(`Pokemon ${this.pokemons[pokemonIndex].name} was ${action}`);
   }
@@ -42,6 +43,7 @@ export class PokemonBodyComponent implements OnInit {
   private getPokemons() {
     pokemons.forEach((pokemon) => {
       pokemon.damage = this.getRandomDamage(20, 100);
+      pokemon.caught = false;
     });
     this.pokemons = pokemons.slice(0, this.count);
 

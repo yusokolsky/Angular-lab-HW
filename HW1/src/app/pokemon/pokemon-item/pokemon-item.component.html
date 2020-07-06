@@ -25,11 +25,8 @@
   <div (click)="onClickButtons($event)"
        class="pokemon_buttons"
   >
-    <button [attr.data-action]="'catch'" [ngClass]="{'pokemon_button-lines': style === 'lines'}"
-            class="pokemon_button pokemon_button-catch">Catch
-    </button>
-    <button [attr.data-action]="'release'" [ngClass]="{'pokemon_button-lines': style === 'lines'}"
-            class="pokemon_button pokemon_button-release">Release
+    <button [attr.data-action]="pokemon.caught" [ngClass]="{'pokemon_button-lines': style === 'lines'}"
+            class="pokemon_button pokemon_button-catch">{{ pokemon.caught ? 'Release' : 'Catch' }}
     </button>
   </div>
 
