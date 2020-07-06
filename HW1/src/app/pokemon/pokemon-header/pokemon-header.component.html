@@ -1,0 +1,15 @@
+<header class="header header-container">
+  <div (click)="styleChange.emit()"
+       class="header_control"
+  >
+    <div *ngIf="style === 'cards'">
+      ☰ switch to lines view
+    </div>
+
+    <div *ngIf="style === 'lines'">
+      🎴 switch to cards view
+    </div>
+
+  </div>
+
+</header>

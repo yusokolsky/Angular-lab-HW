@@ -1,0 +1,17 @@
+.body_wrapper {
+  padding-top: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.body_wrapper-lines {
+  flex-direction: column;
+}
+
+.count-select {
+  position: fixed;
+  background-color: #86bd05;
+  padding: 8px;
+  font-size: 26px;
+}
