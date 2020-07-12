@@ -1,0 +1,33 @@
+<div [ngClass]="{
+        'pokemon-powerful': isPowerful(),
+        'pokemon-cards': style == 'cards',
+        'pokemon-lines': style == 'lines'
+    }"
+     class="pokemon"
+>
+  <div [ngClass]="{'pokemon_data-lines': style === 'lines'}"
+       class="pokemon_data"
+  >
+    <span [ngClass]="{'pokemon_name-lines': style === 'lines'}"
+          class="pokemon_name"
+    >
+      {{ pokemon.name | uppercase }}
+    </span>
+    <span class="pokemon_damage">⚔ {{ pokemon.damage }} damage</span>
+    <img [ngClass]="{'pokemon_image-lines': style === 'lines'}"
+         [src]="'../../../assets/pokemons/'+ pokemon.id +'.png'"
+         alt="{{pokemon.name}}"
+         class="pokemon_image"
+    >
+
+  </div>
+
+  <div (click)="onClickButton()"
+       class="pokemon_buttons"
+  >
+    <button [attr.data-action]="pokemon.caught" [ngClass]="{'pokemon_button-lines': style === 'lines'}"
+            class="pokemon_button pokemon_button-catch">{{ pokemon.caught ? 'Release' : 'Catch' }}
+    </button>
+  </div>
+
+</div>
