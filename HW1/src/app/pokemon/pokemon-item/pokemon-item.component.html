@@ -22,7 +22,7 @@
 
   </div>
 
-  <div (click)="onClickButtons($event)"
+  <div (click)="onClickButton()"
        class="pokemon_buttons"
   >
     <button [attr.data-action]="pokemon.caught" [ngClass]="{'pokemon_button-lines': style === 'lines'}"

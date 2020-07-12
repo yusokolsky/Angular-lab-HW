@@ -1,11 +1,20 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Pokemon, PokemonAction} from "../../interfaces";
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
+import {Pokemon} from "../../interfaces";
 
 
 @Component({
   selector: 'app-pokemon-item',
   templateUrl: './pokemon-item.component.html',
-  styleUrls: ['./pokemon-item.component.css']
+  styleUrls: ['./pokemon-item.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class PokemonItemComponent implements OnInit {
@@ -15,24 +24,23 @@ export class PokemonItemComponent implements OnInit {
 
   @Output() action = new EventEmitter();
 
-  constructor() {
+  constructor(public cd: ChangeDetectorRef) {
+
   }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
+    this.cd.detectChanges();
   }
 
-  onClickButtons(event): void {
-    const action: boolean = event.target.dataset.action === 'catch';
-
-    const pokemonAction: PokemonAction = {
-      id: this.pokemon.id,
-      action: action
-    };
-    this.action.emit(pokemonAction);
+  onClickButton(): void {
+    this.action.emit(this.pokemon.id);
   }
 
   isPowerful(): boolean {
     return this.pokemon.damage > 50;
+  }
+
+  ngOnInit(): void {
   }
 
 }

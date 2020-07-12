@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
+import {PokemonService} from '../services/pokemon/pokemon.service';
 import {Pokemon} from '../../interfaces';
-import {pokemons} from '../../../pokemonsLits';
 
 @Component({
   selector: 'app-pokemon-body',
@@ -16,36 +16,28 @@ export class PokemonBodyComponent implements OnInit {
 
   pokemons: Pokemon[] = [];
 
-  constructor() {
+  constructor(
+    private pokemonService: PokemonService,
+  ) {
   }
 
-  onAction(event): void {
-    const pokemonIndex: number = this.pokemons.findIndex(el => el.id === event.id);
-    this.pokemons[pokemonIndex].caught = !this.pokemons[pokemonIndex].caught;
-    const action: string = event.action ? 'released' : 'caught';
-    alert(`Pokemon ${this.pokemons[pokemonIndex].name} was ${action}`);
-    console.log(`Pokemon ${this.pokemons[pokemonIndex].name} was ${action}`);
+  onAction(pokemonId: number): void {
+    this.pokemonService.action(pokemonId);
   }
 
   countChange(count): void {
     this.count = count;
     this.getPokemons();
+    this.pokemons = this.pokemonService.filter();
   }
 
   ngOnInit(): void {
     this.getPokemons();
   }
 
-  private getRandomDamage(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
-
   private getPokemons() {
-    pokemons.forEach((pokemon) => {
-      pokemon.damage = this.getRandomDamage(20, 100);
-      pokemon.caught = false;
-    });
-    this.pokemons = pokemons.slice(0, this.count);
+    this.pokemonService.getAll(this.count).subscribe(pokemons => this.pokemons = pokemons);
+
 
   }
 
