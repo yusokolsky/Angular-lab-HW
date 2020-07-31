@@ -1,5 +1,5 @@
 <div class="count-select">
-  <label for="count">Number of pokemons (refresh damage)</label>
+  <label for="count">Number of pokemons</label>
   <select #t (change)="countChange(t.value)" id="count">
     <option selected>100</option>
     <option>200</option>
@@ -9,13 +9,13 @@
     <option>949</option>
   </select>
 </div>
-<div [ngClass]="{'body_wrapper-lines': style === 'lines'}"
+<div [ngClass]="{'body_wrapper-lines': this.getStyle() === 'lines'}"
      class="body_wrapper"
 >
   <app-pokemon-item
     (action)="onAction($event)"
     *ngFor="let pokemon of pokemons"
     [pokemon]="pokemon"
-    [style]="style"
+    [style]=this.getStyle()
   ></app-pokemon-item>
 </div>

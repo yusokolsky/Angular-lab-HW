@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 import {PokemonService} from '../services/pokemon/pokemon.service';
 import {Pokemon} from '../../interfaces';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-pokemon-body',
@@ -18,6 +19,7 @@ export class PokemonBodyComponent implements OnInit {
 
   constructor(
     private pokemonService: PokemonService,
+    private route: ActivatedRoute,
   ) {
   }
 
@@ -32,13 +34,24 @@ export class PokemonBodyComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      const {pokemon} = params;
+      if (pokemon)
+        this.pokemonService.findByName(pokemon);
+    });
     this.getPokemons();
   }
 
-  private getPokemons() {
-    this.pokemonService.getAll(this.count).subscribe(pokemons => this.pokemons = pokemons);
-
-
+  getStyle(): string {
+    return this.pokemonService.style;
   }
 
+  private getPokemons() {
+    this.pokemons = this.pokemonService.getAll(this.count);
+    this.pokemonService.getPokemonsObservable().subscribe(pokemons => {
+      this.pokemons = pokemons;
+      console.log(pokemons)
+    });
+
+  }
 }

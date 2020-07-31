@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {PokemonService} from "../services/pokemon/pokemon.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-pokemon-header',
@@ -11,10 +13,23 @@ export class PokemonHeaderComponent implements OnInit {
 
   @Output() styleChange = new EventEmitter();
 
-  constructor() {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private pokemonService: PokemonService
+  ) {
   }
 
   ngOnInit(): void {
+    this.pokemonService.init();
+  }
+
+  getStyle(): string {
+    return this.pokemonService.style;
+  }
+
+  styleChanger(): void {
+    this.pokemonService.onStyleChange();
   }
 
 }

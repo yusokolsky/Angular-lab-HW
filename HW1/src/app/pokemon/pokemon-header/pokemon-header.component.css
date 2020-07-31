@@ -7,10 +7,13 @@
 }
 
 .header-container {
+  display: inline-block;
   background-color: rgb(143, 204, 0);
+  text-align: center;
 }
 
 .header_control {
+  display: inline-block;
   cursor: pointer;
   text-align: center;
   padding-top: 5px;
@@ -18,3 +21,13 @@
   font-size: 37px;
 }
 
+.header_home-button {
+  margin-right: 100px;
+  color: black;
+  font-size: 44px;
+}
+
+.header-search {
+  margin: 12px;
+  margin-left: 100px;
+}

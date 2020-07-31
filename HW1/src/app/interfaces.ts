@@ -3,6 +3,7 @@ export class Pokemon {
   name: string;
   damage?: number;
   caught?: boolean;
+  dateOfCreate?: string;
 }
 
 export class PokemonAction {

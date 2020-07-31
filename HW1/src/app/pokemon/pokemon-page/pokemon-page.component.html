@@ -1,0 +1,27 @@
+<div class="body_wrapper">
+  <div class="pokemon-page-block">
+    <img
+      [src]="'../../../assets/pokemons/' + pokemon.id + '.png'"
+      alt="{{ pokemon.name }}"
+      class="pokemon-page_image"
+    />
+    <div class="pokemon-page-block-info">
+      <div class="pokemon-page-block-info_name">{{ pokemon.name }}</div>
+      <div class="pokemon-page-block-info_details">
+        {{ pokemon.dateOfCreate }}
+      </div>
+      <div class="pokemon-page_buttons">
+        <button
+          (click)="onClickButton()"
+          [attr.data-action]="pokemon.caught"
+          class="pokemon_button pokemon_button-catch"
+        >
+          {{ pokemon.caught ? "Release" : "Catch" }}
+        </button>
+        <button class="pokemon_button pokemon_button-catch">
+          Edit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.pokemon-page-block {
+  margin-top: 75px;
+  text-align: center;
+}
+
+.pokemon-page_image {
+  display: inline-block;
+}
+
+.pokemon-page-block-info {
+  display: inline-block;
+}
