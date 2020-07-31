@@ -1,0 +1,15 @@
+<header class="header header-container">
+  <a [routerLink]="['']" class="header_home-button">home</a>
+  <div (click)="this.styleChanger()" class="header_control">
+    <div *ngIf="this.getStyle() === 'cards'">
+      ☰ switch to lines view
+    </div>
+
+    <div *ngIf="this.getStyle() === 'lines'">
+      🎴 switch to cards view
+    </div>
+  </div>
+  <div class="header-search">
+    <app-pokemon-search></app-pokemon-search>
+  </div>
+</header>
